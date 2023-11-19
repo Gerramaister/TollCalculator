@@ -107,23 +107,23 @@ public class TollCalculator {
      */
     private int getTollFeeByTime(LocalTime time) {
 
-        if ((time.isAfter(LocalTime.of(5, 59, 59, 9999)) && time.isBefore(LocalTime.of(6, 30))) || // 06:00 - 06:29
-                (time.isAfter(LocalTime.of(8, 29, 59, 9999)) && time.isBefore(LocalTime.of(15, 00))) || // 08:30 – 14:59
-                (time.isAfter(LocalTime.of(17, 59, 59, 9999)) && time.isBefore(LocalTime.of(18, 30))) // 18:00 – 18:29
+        if (((time.isAfter(LocalTime.parse("06:00")) || time.equals(LocalTime.parse("06:00"))) && time.isBefore(LocalTime.parse("06:30"))) || // 06:00 - 06:29
+                ((time.isAfter(LocalTime.parse("08:30")) || time.equals(LocalTime.parse("08:30"))) && time.isBefore(LocalTime.parse("15:00"))) || // 08:30 – 14:59
+                ((time.isAfter(LocalTime.parse("18:00")) || time.equals(LocalTime.parse("18:00"))) && time.isBefore(LocalTime.parse("18:30"))) // 18:00 – 18:29
         ) {
             return 9;
         }
 
-        if ((time.isAfter(LocalTime.of(6, 29, 59, 9999)) && time.isBefore(LocalTime.of(7, 00))) || // 06:30–06:59
-                (time.isAfter(LocalTime.of(7, 59, 59, 9999)) && time.isBefore(LocalTime.of(8, 30))) || // 08:00–08:29
-                (time.isAfter(LocalTime.of(14, 59, 59, 9999)) && time.isBefore(LocalTime.of(15, 30))) || // 15:00–15:29
-                (time.isAfter(LocalTime.of(16, 59, 59, 9999)) && time.isBefore(LocalTime.of(18, 0))) // 17:00–17:59
+        if (((time.isAfter(LocalTime.parse("06:30")) || time.equals(LocalTime.parse("06:30"))) && time.isBefore(LocalTime.parse("07:00"))) || // 06:30–06:59
+                ((time.isAfter(LocalTime.parse("08:00")) || time.equals(LocalTime.parse("08:00"))) && time.isBefore(LocalTime.parse("08:30"))) || // 08:00–08:29
+                ((time.isAfter(LocalTime.parse("15:00")) || time.equals(LocalTime.parse("15:00"))) && time.isBefore(LocalTime.parse("15:30"))) || // 15:00–15:29
+                ((time.isAfter(LocalTime.parse("17:00")) || time.equals(LocalTime.parse("17:00"))) && time.isBefore(LocalTime.parse("18:00"))) // 17:00–17:59
         ) {
             return 16;
         }
 
-        if ((time.isAfter(LocalTime.of(6, 59, 59, 9999)) && time.isBefore(LocalTime.of(8, 00))) || // 07:00–07:59
-                (time.isAfter(LocalTime.of(15, 29, 59, 9999)) && time.isBefore(LocalTime.of(17, 00))) // 15:30–16:59
+        if (((time.isAfter(LocalTime.parse("07:00")) || time.equals(LocalTime.parse("07:00"))) && time.isBefore(LocalTime.parse("08:00"))) || // 07:00–07:59
+                ((time.isAfter(LocalTime.parse("15:30")) || time.equals(LocalTime.parse("15:30"))) && time.isBefore(LocalTime.parse("17:00"))) // 15:30–16:59
         ) {
             return 22;
         }
